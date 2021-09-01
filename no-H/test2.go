@@ -25,79 +25,49 @@ func Encrypt(text string, key []byte) (string, error) {
 	return hex.EncodeToString(encrypted), nil
 }
 
-//加密写入一个tmp文件到U盘
-func mywritefile(s1 string,s2 string){
-	//s1代表路径， s2代表用来加密的随机字符串
-
-}
-
-//读取tmp文件,并解码
-func myreadfile2(s string  ) {
-	//拿到一个路径数组
-	//fmt.Println(s)
-	userFile := s+"/.tmp" //文件路径
-	fin,err := os.Open(userFile) //打开文件,返回File的内存地址
-	defer fin.Close() //延迟关闭资源
-	if err != nil{
-		log.Println("i/o错误")
-		fmt.Println(userFile,err)
-
-	}
-
-
-
-
-
-
-}
 func Exists(path string) bool {
-
-	_, err := os.Stat(path)    //os.Stat获取文件信息
+	_, err := os.Stat(path) //os.Stat获取文件信息
 
 	if err != nil {
-
 		if os.IsExist(err) {
 
 			return true
 
 		}
-
 		return false
-
 	}
 
 	return true
 
 }
 
+//输入一串id，进行 加密
+
 func main() {
-	args := os.Args //获取用户输入的所有参数
-	if args == nil || len(args) <1{//如果用户没有输入,或参数个数不够,则调用该函数提示用户
-		fmt.Println("your str?");
+	args := os.Args                   //获取用户输入的所有参数
+	if args == nil || len(args) < 1 { //如果用户没有输入,或参数个数不够,则调用该函数提示用户
+		fmt.Println("your str?")
 
 		return
 	}
 	str := args[1] //获取输入的第一个参数
-
-
-
 	key := []byte{0xBA, 0x37, 0x2F, 0x02, 0xC3, 0x92, 0x1F, 0x7D,
 		0x7A, 0x3D, 0x5F, 0x06, 0x41, 0x9B, 0x3F, 0x2D,
 		0xBA, 0x37, 0x2F, 0x02, 0xC3, 0x92, 0x1F, 0x7D,
 		0x7A, 0x3D, 0x5F, 0x06, 0x41, 0x9B, 0x3F, 0x2D,
 	}
-	strEncrypted,err := Encrypt(str, key)
+	strEncrypted, err := Encrypt(str, key)
 	if err != nil {
-		log.Println("Encrypted err:",err)
+		log.Println("Encrypted err:", err)
 	}
-	fmt.Println("Encrypted:",strEncrypted)
+	fmt.Println("Encrypted:", strEncrypted)
 	//拿到文件路径
-	glob, _ := filepath.Glob(filepath.Join("/media","*/*"))
+	glob, _ := filepath.Glob(filepath.Join("/media", "*/*"))
 	s := glob[0]
 	fmt.Println(s)
 	_, err = os.Stat(s + "/.tmp001") //os.Stat获取文件信息
-	path :=s+"/.tmp001"
-	if(Exists(path)){
+	path := s + "/.tmp001"
+	if Exists(path) {
 		err := os.Remove(path)
 		if err != nil {
 			return

@@ -1,0 +1,20 @@
+syntax = "proto3";
+package GrpcDemo;
+option go_package = "./pb";
+
+/* 服务 */
+service HelloService {
+  /* 单个请求配置 */
+  rpc HelloInfo(HelloInfoRequest) returns (HelloInfoReply) {}  // 请求主体
+}
+
+
+/* 请求主体对应单个请求配置 */
+
+// 请求主体结构
+message HelloInfoRequest {
+  string name = 1;
+}
+message HelloInfoReply {
+  string name = 1;
+}

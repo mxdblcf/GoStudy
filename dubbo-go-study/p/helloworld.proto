@@ -1,0 +1,21 @@
+syntax = "proto3";
+package protobuf;
+// protoc -I . helloworld.proto --dubbo3_out=plugins=grpc+dubbo:.
+// The greeting service definition.问候服务定义
+service Greeter {
+  // 发送问候
+  rpc SayHello (HelloRequest) returns (User) {}
+  rpc SayHelloStream (stream HelloRequest) returns (stream User) {}
+}
+
+// 包含用户名的请求消息。
+message HelloRequest {
+  string name = 1;
+}
+
+// The response message containing the greetings包含问候语的响应消息
+message User {
+  string name = 1;
+  string id = 2;
+  int32 age = 3;
+}
