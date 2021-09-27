@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"net"
 	"strings"
 )
@@ -37,12 +38,18 @@ func HandleConn(conn net.Conn) {
 
 func main() {
 	//1、监听
-	listener, err1 := net.Listen("tcp", "127.0.0.1:9001")
+	listener, err1 := net.Listen("tcp", "192.168.56.1:9001")
 	if err1 != nil {
 		fmt.Println("err1 = ", err1)
 		return
 	}
-	defer listener.Close()
+	defer func(listener net.Listener) {
+		err := listener.Close()
+		if err != nil {
+			log.Println(err)
+			panic(err)
+		}
+	}(listener)
 
 	//2、接收多个用户连接
 	for {

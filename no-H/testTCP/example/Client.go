@@ -1,9 +1,8 @@
-package main
+package packet
 
 import (
 	"fmt"
 	"net"
-	"packet"
 	"time"
 )
 
