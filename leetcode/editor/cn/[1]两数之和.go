@@ -43,7 +43,8 @@
 // Related Topics 数组 哈希表 👍 12004 👎 0
 
 //思路 On 扫描数组，对于每个元素，在map中能组合给定值的另一半数组，
-package Gostudy
+
+package GoStudy
 //leetcode submit region begin(Prohibit modification and deletion)
 
 func twoSum(nums []int, target int) []int {

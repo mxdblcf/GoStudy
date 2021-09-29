@@ -1,0 +1,45 @@
+info:
+  contact: {}
+  description: 测试
+  title: 测试
+  version: 0.0.1
+paths:
+  /accounts/mxd:
+    get:
+      consumes:
+      - application/json
+      description: get string by ID
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+        "404":
+          description: Not Found
+          schema:
+            type: string
+        "500":
+          description: Internal Server Error
+          schema:
+            type: string
+      tags:
+      - accounts
+  /hello:
+    get:
+      consumes:
+      - application/json
+      description: 你好
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: name,helloWorld
+          schema:
+            type: string
+swagger: "2.0"

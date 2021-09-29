@@ -41,20 +41,22 @@
 // 
 // Related Topics 字符串 动态规划 👍 4083 👎 0
 
-package Gostudy
-//使用动态规划做 on2  ,所以使用 中心扩散法，找中心轴
+package GoStudy
+//使用动态规划做 On2  ,所以使用 中心扩散法，找中心轴
 //定义 dep[i][j]表示从第i个字符 到第j个字符这一段是不是一个会问穿
 //回文串去掉头尾后还是一个回文串
 //leetcode submit region begin(Prohibit modification and deletion)
-func longestPalindrome(s string) string {
+
+
+func LongestPalindrome(s string) string {
 
 	if s == "" {
 		return ""
 	}
 	start ,end :=0,0
 	for i,_:= range s{
-		l1, r1 := expandAroundCenter(s, i, i)
-		l2, r2 := expandAroundCenter(s, i, i+1)
+		l1, r1 := ExpandAroundCenter(s, i, i)
+		l2, r2 := ExpandAroundCenter(s, i, i+1)
 		if r1-l1>end-start {
 			start,end=l1,r1
 		}
@@ -66,7 +68,7 @@ return s[start:end+1]
 
 }
 //中心扩散
-func expandAroundCenter( s string, l,r int)  (int,int){
+func ExpandAroundCenter( s string, l,r int)  (int,int){
 
 	for ; l>=0 && r< len(s) && s[l]== s[r]; l ,r=l-1,r+1 {}
  return l+1,r-1
