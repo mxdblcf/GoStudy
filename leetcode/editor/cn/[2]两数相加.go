@@ -39,8 +39,6 @@
 // 
 // Related Topics 递归 链表 数学 👍 6826 👎 0
 
-
-//leetcode submit region begin(Prohibit modification and deletion)
 /**
  * Definition for singly-linked list.
  * type ListNode struct {
@@ -48,6 +46,8 @@
  *     Next *ListNode
  * }
  */
+//leetcode submit region begin(Prohibit modification and deletion)
+
 func addTwoNumbers(l1, l2 *ListNode) (head *ListNode) {
 var tail *ListNode
 carry := 0
