@@ -23,7 +23,7 @@
 //输出: true 
 // Related Topics 数组 哈希表 排序 👍 461 👎 0
 
-package leetcode
+package main
 //leetcode submit region begin(Prohibit modification and deletion)
 
 

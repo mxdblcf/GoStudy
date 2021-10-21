@@ -41,7 +41,7 @@
 // 
 // Related Topics 字符串 动态规划 👍 4083 👎 0
 
-package leetcode
+package main
 //使用动态规划做 On2  ,所以使用 中心扩散法，找中心轴
 //定义 dep[i][j]表示从第i个字符 到第j个字符这一段是不是一个会问穿
 //回文串去掉头尾后还是一个回文串

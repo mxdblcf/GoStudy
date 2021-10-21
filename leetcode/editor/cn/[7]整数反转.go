@@ -41,7 +41,7 @@
 // -2³¹ <= x <= 2³¹ - 1 
 // 
 // Related Topics 数学 👍 3120 👎 0
-package leetcode
+package main
 //leetcode submit region begin(Prohibit modification and deletion)
 
 func reverse(x int) int {

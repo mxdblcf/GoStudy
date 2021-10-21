@@ -44,7 +44,7 @@
 
 //思路 On 扫描数组，对于每个元素，在map中能组合给定值的另一半数组，
 
-package leetcode
+package main
 //leetcode submit region begin(Prohibit modification and deletion)
 
 func twoSum(nums []int, target int) []int {
