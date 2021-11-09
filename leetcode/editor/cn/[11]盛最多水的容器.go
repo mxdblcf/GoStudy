@@ -53,15 +53,23 @@ func maxArea(height []int) int {
 max,start,end:=0,0,len(height)-1
 
 	for start<end {
+		//宽度= 结尾-开头
 		width:=end-start
+		//高默认为0
 		high:=0
+		//如果 数组开头值小于数组结尾
 		if height[start]<height[end]{
+			//开头=高
 			high=height[start]
+			//开头++
 			start++
 		}else  {
+			//否则结尾=高
 			high=height[end]
+			//结尾--
 			end--
 		}
+		//  temp带便高度和宽度乘积
 		temp:=width*high
 		if temp > max{
 			max=temp
