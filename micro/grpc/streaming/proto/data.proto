@@ -1,19 +1,20 @@
 syntax = "proto3";
-package GrpcDemo;// 指定默认包名
-option go_package = "./pb";// 指定golang包名
+package GrpcDemo;
+option go_package = "./pb";
 
-// 指定golang包名
 /* 服务 */
-service HiService {
+service HelloService {
   /* 单个请求配置 */
-  rpc HiInfo(HiInfoRequest) returns (HiInfoReply) {}  // 请求主体
+  rpc HelloInfo(HelloInfoRequest) returns (HelloInfoReply) {}  // 请求主体
 }
+
+
 /* 请求主体对应单个请求配置 */
 
 // 请求主体结构
-message HiInfoRequest {
+message HelloInfoRequest {
   string name = 1;
 }
-message HiInfoReply {
+message HelloInfoReply {
   string name = 1;
 }

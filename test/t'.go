@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	s3();
+	a:= make([]int,0,10)
+		fmt.Println(cap(a))
 }
 
 func s(s []int){
