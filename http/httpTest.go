@@ -7,10 +7,9 @@ import (
 )
 
 func main() {
-
 	http.HandleFunc("/", sayhello1)
 	http.HandleFunc("/abc", sayhello12)
-	err := http.ListenAndServe(":9999", nil)
+	err := http.ListenAndServe(":80", nil)
 	if err != nil {
 		log.Fatal(err)
 	}
