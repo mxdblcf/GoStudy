@@ -1,10 +1,7 @@
 package main
 
 import (
-	_ "GoStudy/GinStudy/docs"
 	"github.com/gin-gonic/gin"
-	"github.com/swaggo/files"
-	"github.com/swaggo/gin-swagger"
 	"net/http"
 )
 
@@ -15,13 +12,23 @@ import (
 func main() {
 	// 创建一个默认的路由引擎
 	r := gin.Default()
-	r.GET("/hello",hello)
-	r.GET("/swagger/*any",ginSwagger.WrapHandler(swaggerFiles.Handler))
+	//c创建路由组
+	group := r.Group("v1")
+	{
+		group.GET("/m", m1)
+		group.GET("/n", m2)
+	}
+	r.GET("/hello", hello)
 	// 启动HTTP服务，默认在0.0.0.0:8080启动服务
 	r.Run()
 }
 
-
+func m1(c *gin.Context) {
+	c.JSON(http.StatusOK, gin.H{"message": "mm"})
+}
+func m2(c *gin.Context) {
+	c.JSON(http.StatusOK, "1234")
+}
 
 // @你好世界
 // @Description 你好
@@ -29,7 +36,6 @@ func main() {
 // @Produce json
 // @Success 200 {string} string	"name,helloWorld"
 // @Router /hello [get]
- func hello(c *gin.Context) {
-		c.JSON(http.StatusOK, "helloworldmxd")}
-
-
+func hello(c *gin.Context) {
+	c.JSON(http.StatusOK, "helloworldmxd")
+}
