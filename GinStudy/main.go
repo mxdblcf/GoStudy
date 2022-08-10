@@ -1,6 +1,7 @@
 package main
 
 import (
+	"GoStudy/GinStudy/controller"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -20,6 +21,7 @@ func main() {
 	}
 	r.GET("/hello", hello)
 	// 启动HTTP服务，默认在0.0.0.0:8080启动服务
+	controller.Reader(*r)
 	r.Run()
 }
 
