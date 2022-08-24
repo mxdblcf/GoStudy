@@ -1,7 +1,7 @@
 package main
 
 import (
-	"GoStudy/GinStudy/controller"
+	"github.com/gin-contrib/gzip"
 	"github.com/gin-gonic/gin"
 	"net/http"
 )
@@ -13,6 +13,9 @@ import (
 func main() {
 	// 创建一个默认的路由引擎
 	r := gin.Default()
+	//开启content-accept: gzip ，不过一般是在nginx里面开启
+	r.Use(gin.Recovery())
+	r.Use(gzip.Gzip(gzip.DefaultCompression))
 	//c创建路由组
 	group := r.Group("v1")
 	{
@@ -22,7 +25,7 @@ func main() {
 	r.GET("/hello", hello)
 	// 启动HTTP服务，默认在0.0.0.0:8080启动服务
 	//controller.Reader(*r)
-	controller.BasicAuthTest(r)
+	//	controller.BasicAuthTest(r)
 	r.Run()
 }
 
